@@ -83,6 +83,7 @@ a:hover {
   top: 1rem;
   font-weight: bolder;
   cursor: pointer;
+  z-index: 5;
 }
 
 tbody tr:hover {

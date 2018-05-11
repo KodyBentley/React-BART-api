@@ -8,28 +8,33 @@ import './../App.css';
 export default class Test extends React.Component<{}, State> {
     constructor(props: {}) {
         super(props);
+        // Define initial state
         this.state = {
             showMenu: false,
             menuData: [{ abbr: '', stnName: '' }],
-            stationData: undefined,
+            stationData: { name: '', abbr: '', item: [] },
             showStation: false,
             error: '',
             value: ''
         };
 
-        this.showMenu = this.showMenu.bind(this);
-        this.closeMenu = this.closeMenu.bind(this);
+        // Binding of functions
         this.handleSelection = this.handleSelection.bind(this);
         this.closeSelection = this.closeSelection.bind(this);
         this.displayStationName = this.displayStationName.bind(this);
     }
 
+    /**
+     * Request sent to backend on mount to receive menu data 
+     */
     componentWillMount() {
         Request('http://localhost:3001', (err, res, body) => {
             if (err) {
                 console.log('REQUEST ERROR', err);
             } else {
+                // Parse data received from backend
                 let parsed = JSON.parse(body);
+                // Set state for menuData
                 this.setState({
                     menuData: parsed
                 });
@@ -37,52 +42,59 @@ export default class Test extends React.Component<{}, State> {
         });
     }
 
-    showMenu(event: any) {
+    /**
+     * Function to handle closing a station selection
+     * @param event Mouse event on close button
+     */
+    closeSelection(event: React.MouseEvent<HTMLElement>) {
+        // Prevent window default from refreshing
         event.preventDefault();
-        this.setState({ showMenu: true }, () => {
-            document.addEventListener('click', this.closeMenu);
-        });
-    }
-
-    closeMenu() {
-        this.setState({ showMenu: false }, () => {
-            document.removeEventListener('click', this.closeMenu);
-        });
-    }
-
-    closeSelection(event: any) {
-        event.preventDefault();
+        // Set state for showStation
         this.setState({
             showStation: false
         });
     }
 
-    handleSelection(event: any) {
+    /**
+     * Function for handing station that is clicked in menu
+     * @param event Mouse event on selection
+     */
+    handleSelection(event: React.ChangeEvent<any>) {
+        // Prevent window default from refreshing
         event.preventDefault();
+        // Define payload to be sent to backend
         let postData = {
             stnName: event.target.id
         };
 
+        // URL for backend
         let url = 'http://localhost:3001/test';
+        // Options to be sent in POST
         let options = {
             method: 'post',
             body: postData,
             json: true,
             url: url
         };
+
+        // Request post function
         Request.post(options, (err, res, body) => {
+            // Error catch
             if (err) {
                 console.log('REQUEST POST ERR', err);
-                this.setState({
-                    error: 'THERE WAS AN ERROR'
-                });
             } else {
-                console.log('body: ', body);
+                /**
+                 * Check to see if an error message was returned from api call.
+                 */
                 if (body.data.root.message) {
+                    // Set state for error message
                     this.setState({
-                        error: 'Unfortunately there seems to be an issue with that selection. Please try again.'
+                        error: 'Unfortunately there seems to be an issue with that selection. Please select another station.'
                     });
                 } else {
+                    /**
+                     * If no error set state for stationData, showStation, and empty for error
+                     */
                     this.setState({
                         stationData: body.data.root.station,
                         showStation: true,
@@ -93,8 +105,15 @@ export default class Test extends React.Component<{}, State> {
         });
     }
 
+    /**
+     * Function to compare abbreviation in menuData and data returned from backend
+     * If matched return full station name to be returned and displayed
+     * @param str Abbreviation from API call to be compared to menuData abbreviation
+     */
     displayStationName(str: string) {
+        // Loop throught menuData
         for (let i = 0; i < this.state.menuData.length; i++) {
+            // Compare each iteration to str param, and if matched return full name
             if (this.state.menuData[i].abbr === str.toLowerCase()) {
                 return this.state.menuData[i].stnName;
             }
@@ -145,31 +164,19 @@ export default class Test extends React.Component<{}, State> {
                         </Row>
                     </Col>
                 </Row>
-                <Row className="menu-row">
-                    {/* <Col lg={12}>
-                        <button onClick={this.showMenu}>
-                            Select Station
-                </button>
-                    </Col> */}
-
-                    {/* {
-                        this.state.showMenu
-                            ? (
-                                <Col lg={2} className="menu">
-                                    {this.state.menuData.map((item, index) => {
-                                        return (
-                                            <div key={index}>
-                                                <a href="" key={item.abbr} id={item.abbr} onClick={this.handleSelection}> {item.stnName} </a>
-                                            </div>
-                                        );
-                                    }, this)}
+                {
+                    this.state.error
+                        ? (
+                            <Row>
+                                <Col lg={12} id="error-container">
+                                    <span><i>{this.state.error}</i></span>
                                 </Col>
-                            )
-                            : (
-                                null
-                            )
-                    } */}
-                </Row>
+                            </Row>
+                        )
+                        : (
+                            null
+                        )
+                }
                 {
                     this.state.showStation
                         ? (
@@ -211,20 +218,6 @@ export default class Test extends React.Component<{}, State> {
                                             }, this)}
                                         </tbody>
                                     </Table>
-                                </Col>
-                            </Row>
-                        )
-                        : (
-                            null
-                        )
-                }
-
-                {
-                    this.state.error
-                        ? (
-                            <Row>
-                                <Col lg={12} id="error-container">
-                                    <span><i>{this.state.error}</i></span>
                                 </Col>
                             </Row>
                         )
