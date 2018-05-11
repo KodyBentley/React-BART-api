@@ -1,19 +1,15 @@
 import * as React from 'react';
-import './App.css';
-import Test  from './components/test';
+import './static/styles/App.css';
+import Station  from './components/station';
 import { Jumbotron } from 'react-bootstrap';
-
-// import logo from './logo.svg';
-
 class App extends React.Component {
   public render() {
     return (
       <div className="App">
         <Jumbotron className="App-header">
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
           <h1 className="App-title">Zilly BART Schedule!</h1>
         </Jumbotron>
-        <Test />
+        <Station />
       </div>
     );
   }

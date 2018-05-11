@@ -3,7 +3,7 @@ import { Col, Row, Grid, Table } from 'react-bootstrap';
 import * as React from 'react';
 import * as Request from 'request';
 import State from './../interfaces/iState';
-import './../App.css';
+import './../static/styles/App.css';
 
 export default class Test extends React.Component<{}, State> {
     constructor(props: {}) {
@@ -180,7 +180,7 @@ export default class Test extends React.Component<{}, State> {
                         ? (
                             <Row>
                                 <Col lg={12} id="error-container">
-                                    <span><i>{this.state.error}</i></span>
+                                    <h4>{this.state.error}</h4>
                                 </Col>
                             </Row>
                         )
@@ -204,8 +204,8 @@ export default class Test extends React.Component<{}, State> {
                                             <tr>
                                                 <th>Route</th>
                                                 <th>Dest</th>
-                                                <th>Depart</th>
-                                                <th>Arrive</th>
+                                                <th>Depart/Orig</th>
+                                                <th>Arrive/Dest</th>
                                             </tr>
                                         </thead>
                                         <tbody>

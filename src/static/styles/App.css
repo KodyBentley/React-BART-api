@@ -8,8 +8,8 @@
 }
 
 .App-header {
-  background-color: #2d3436;
-  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: #000000;
   font-weight: bolder;
   font-size: 34px;
 }
@@ -110,7 +110,7 @@ tbody tr:hover {
 }
 
 #autocomplete-row {
-  background: #fff;
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 2rem;
-  border-radius: 25px;
+  border-radius: 15px;
 }
