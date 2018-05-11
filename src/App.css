@@ -1,0 +1,102 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #2d3436;
+  color: #ffffff;
+  font-weight: bolder;
+  font-size: 34px;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Test component css */
+
+.menu-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#station-name {
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+.menu {
+  background-color: #2d3436;
+  min-height: 190px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 300px;
+  position: absolute;
+  top: 30%;
+  z-index: 2;
+  border-radius: 10px;
+}
+
+a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #00cec9;
+}
+
+#table-container {
+  position: relative;
+}
+
+.table-responsive {
+  max-height: 500px;
+}
+
+.station-table {
+  overflow: auto;
+}
+
+.close-btn {
+  position: absolute;
+  right: 2rem;
+  top: 1rem;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+tbody tr:hover {
+  background-color: #e5e5e5;
+}
+
+#error-container {
+  color: red;
+}
+
+#autocomplete-container {
+  margin: auto;
+}
+
+#search-header {
+  font-weight: bolder;
+}

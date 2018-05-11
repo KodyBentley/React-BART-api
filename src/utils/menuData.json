@@ -1,0 +1,192 @@
+[{
+    "abbr": "12th",
+    "stnName": "12th St. Oakland City Center"
+},
+{
+    "abbr": "16th",
+    "stnName": "16th St. Mission (SF)"
+},
+{
+    "abbr": "19th",
+    "stnName": "19th St. Oakland"
+},
+{
+    "abbr": "24th",
+    "stnName": "24th St. Mission (SF)"
+},
+{
+    "abbr": "ashb",
+    "stnName": "Ashby (Berkeley)"
+},
+{
+    "abbr": "antc",
+    "stnName": "Antioch"
+},
+{
+    "abbr": "balb",
+    "stnName": "Balboa Park (SF)"
+},
+{
+    "abbr": "bayf",
+    "stnName": "Bay Fair (San Leandro)"
+},
+{
+    "abbr": "cast",
+    "stnName": "Castro Valley"
+},
+{
+    "abbr": "civc",
+    "stnName": "Civic Center (SF)"
+},
+{
+    "abbr": "cols",
+    "stnName": "Coliseum"
+},
+{
+    "abbr": "colm",
+    "stnName": "Colma"
+},
+{
+    "abbr": "conc",
+    "stnName": "Concord"
+},
+{
+    "abbr": "daly",
+    "stnName": "Daly City"
+},
+{
+    "abbr": "dbrk",
+    "stnName": "Downtown Berkeley"
+},
+{
+    "abbr": "dubl",
+    "stnName": "Dublin/Pleasanton"
+},
+{
+    "abbr": "deln",
+    "stnName": "El Cerrito del Norte"
+},
+{
+    "abbr": "plza",
+    "stnName": "El Cerrito Plaza"
+},
+{
+    "abbr": "embr",
+    "stnName": "Embarcadero (SF)"
+},
+{
+    "abbr": "frmt",
+    "stnName": "Fremont"
+},
+{
+    "abbr": "ftvl",
+    "stnName": "Fruitvale (Oakland)"
+},
+{
+    "abbr": "glen",
+    "stnName": "Glen Park (SF)"
+},
+{
+    "abbr": "hayw",
+    "stnName": "Hayward"
+},
+{
+    "abbr": "lafy",
+    "stnName": "Lafayette"
+},
+{
+    "abbr": "lake",
+    "stnName": "Lake Merritt (Oakland)"
+},
+{
+    "abbr": "mcar",
+    "stnName": "MacArthur (Oakland)"
+},
+{
+    "abbr": "mlbr",
+    "stnName": "Millbrae"
+},
+{
+    "abbr": "mont",
+    "stnName": "Montgomery St. (SF)"
+},
+{
+    "abbr": "nbrk",
+    "stnName": "North Berkeley"
+},
+{
+    "abbr": "ncon",
+    "stnName": "North Concord/Martinez"
+},
+{
+    "abbr": "oakl",
+    "stnName": "Oakland Int'l Airport"
+},
+{
+    "abbr": "orin",
+    "stnName": "Orinda"
+},
+{
+    "abbr": "pitt",
+    "stnName": "Pittsburg/Bay Point"
+},
+{
+    "abbr": "pctr",
+    "stnName": "Pittsburg Center"
+},
+{
+    "abbr": "phil",
+    "stnName": "Pleasant Hill"
+},
+{
+    "abbr": "powl",
+    "stnName": "Powell St. (SF)"
+},
+{
+    "abbr": "rich",
+    "stnName": "Richmond"
+},
+{
+    "abbr": "rock",
+    "stnName": "Rockridge (Oakland)"
+},
+{
+    "abbr": "sbrn",
+    "stnName": "San Bruno"
+},
+{
+    "abbr": "sfia",
+    "stnName": "San Francisco Int'l Airport"
+},
+{
+    "abbr": "sanl",
+    "stnName": "San Leandro"
+},
+{
+    "abbr": "shay",
+    "stnName": "South Hayward"
+},
+{
+    "abbr": "ssan",
+    "stnName": "South San Francisco"
+},
+{
+    "abbr": "ucty",
+    "stnName": "Union City"
+},
+{
+    "abbr": "warm",
+    "stnName": "Warm Springs/South Fremont"
+},
+{
+    "abbr": "wcrk",
+    "stnName": "Walnut Creek"
+},
+{
+    "abbr": "wdub",
+    "stnName": "West Dublin"
+},
+{
+    "abbr": "woak",
+    "stnName": "West Oakland"
+}]
