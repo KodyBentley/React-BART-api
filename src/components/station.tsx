@@ -131,12 +131,12 @@ export default class Test extends React.Component<{}, State> {
                     this.state.showSearch
                         ? (
                             <Row>
-                                <Col lg={4} id="autocomplete-container">
+                                <Col lg={4} md={6} sm={6} className="col-10" id="autocomplete-container">
                                     <Row id="autocomplete-row">
-                                        <Col lg={12}>
+                                        <Col lg={12} md={12} sm={12}>
                                             <h3 id="search-header">Select a Station</h3>
                                         </Col>
-                                        <Col lg={12}>
+                                        <Col lg={12} md={12} sm={12}>
                                             <AutoComplete
                                                 menuStyle={{
                                                     borderRadius: '3px',
@@ -179,7 +179,7 @@ export default class Test extends React.Component<{}, State> {
                     this.state.error
                         ? (
                             <Row>
-                                <Col lg={12} id="error-container">
+                                <Col lg={12} md={12} sm={12} id="error-container">
                                     <h4>{this.state.error}</h4>
                                 </Col>
                             </Row>
@@ -191,44 +191,48 @@ export default class Test extends React.Component<{}, State> {
                 {
                     this.state.showStation
                         ? (
-                            <Row id="table-row">
-                                <Col lg={12} id="table-container">
-                                    <a href="" className="close-btn" onClick={this.closeSelection}>Close</a>
-                                    <Row>
-                                        <Col lg={12}>
-                                            <h1 id="station-name">{this.state.stationData.name}</h1>
+                            <Row id="showstation-container">
+                                <Col lg={12} md={12} sm={12} className="col-10" id="table-row-container">
+                                    <Row id="table-row">
+                                        <a href="" className="close-btn" onClick={this.closeSelection}>Close</a>
+                                        <Col lg={12} md={12} sm={12} id="table-container">
+                                            <Row>
+                                                <Col lg={12} md={12} sm={12}>
+                                                    <h1 id="station-name">{this.state.stationData.name}</h1>
+                                                </Col>
+                                            </Row>
+                                            <Table className="station-table" responsive={true}>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Route</th>
+                                                        <th>Dest</th>
+                                                        <th>Depart/Orig</th>
+                                                        <th>Arrive/Dest</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {this.state.stationData.item.map((item, index) => {
+                                                        return (
+                                                            <tr key={index}>
+                                                                <th>
+                                                                    {item['@line'].replace('ROUTE', '')}
+                                                                </th>
+                                                                <th>
+                                                                    {this.displayStationName(item['@trainHeadStation'])}
+                                                                </th>
+                                                                <th>
+                                                                    {item['@origTime']}
+                                                                </th>
+                                                                <th>
+                                                                    {item['@destTime']}
+                                                                </th>
+                                                            </tr>
+                                                        );
+                                                    }, this)}
+                                                </tbody>
+                                            </Table>
                                         </Col>
                                     </Row>
-                                    <Table className="station-table" responsive={true}>
-                                        <thead>
-                                            <tr>
-                                                <th>Route</th>
-                                                <th>Dest</th>
-                                                <th>Depart/Orig</th>
-                                                <th>Arrive/Dest</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {this.state.stationData.item.map((item, index) => {
-                                                return (
-                                                    <tr key={index}>
-                                                        <th>
-                                                            {item['@line'].replace('ROUTE', '')}
-                                                        </th>
-                                                        <th>
-                                                            {this.displayStationName(item['@trainHeadStation'])}
-                                                        </th>
-                                                        <th>
-                                                            {item['@origTime']}
-                                                        </th>
-                                                        <th>
-                                                            {item['@destTime']}
-                                                        </th>
-                                                    </tr>
-                                                );
-                                            }, this)}
-                                        </tbody>
-                                    </Table>
                                 </Col>
                             </Row>
                         )
