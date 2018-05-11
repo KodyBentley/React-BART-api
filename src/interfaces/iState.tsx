@@ -5,4 +5,5 @@ export default interface StateInterface {
     showStation: boolean;
     error: string;
     value: string;
+    showSearch: boolean;
 }

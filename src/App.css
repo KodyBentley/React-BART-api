@@ -57,12 +57,12 @@
 }
 
 a {
-  color: #fff;
+  color: #000000;
   text-decoration: underline;
 }
 
 a:hover {
-  color: #00cec9;
+  color: red;
 }
 
 #table-container {
@@ -100,4 +100,17 @@ tbody tr:hover {
 
 #search-header {
   font-weight: bolder;
+}
+
+#table-row {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 25px;
+  margin-top: 2rem;
+}
+
+#autocomplete-row {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 25px;
 }

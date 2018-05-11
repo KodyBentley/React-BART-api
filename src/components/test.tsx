@@ -11,6 +11,7 @@ export default class Test extends React.Component<{}, State> {
         // Define initial state
         this.state = {
             showMenu: false,
+            showSearch: true,
             menuData: [{ abbr: '', stnName: '' }],
             stationData: { name: '', abbr: '', item: [] },
             showStation: false,
@@ -49,9 +50,10 @@ export default class Test extends React.Component<{}, State> {
     closeSelection(event: React.MouseEvent<HTMLElement>) {
         // Prevent window default from refreshing
         event.preventDefault();
-        // Set state for showStation
+        // Set state for showStation/showSearch
         this.setState({
-            showStation: false
+            showStation: false,
+            showSearch: true
         });
     }
 
@@ -93,12 +95,13 @@ export default class Test extends React.Component<{}, State> {
                     });
                 } else {
                     /**
-                     * If no error set state for stationData, showStation, and empty for error
+                     * If no error set state for stationData, showStation, showSearch, and empty for error
                      */
                     this.setState({
                         stationData: body.data.root.station,
                         showStation: true,
-                        error: ''
+                        error: '',
+                        showSearch: false
                     });
                 }
             }
@@ -124,46 +127,54 @@ export default class Test extends React.Component<{}, State> {
     public render() {
         return (
             <Grid>
-                <Row>
-                    <Col lg={4} id="autocomplete-container">
-                        <Row>
-                            <Col lg={12}>
-                                <h3 id="search-header">Select a Station</h3>
-                            </Col>
-                            <Col lg={12}>
-                                <AutoComplete
-                                    menuStyle={{
-                                        borderRadius: '3px',
-                                        boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
-                                        background: 'rgba(255, 255, 255, 1)',
-                                        padding: '2px 0',
-                                        fontSize: '90%',
-                                        position: 'fixed',
-                                        overflow: 'auto',
-                                        maxHeight: '25%',
-                                        zIndex: 3,
-                                        cursor: 'pointer',
-                                    }}
-                                    inputProps={{ placeholder: 'Search Station' }}
-                                    items={this.state.menuData}
-                                    shouldItemRender={(item, value) => item.stnName.toLowerCase().indexOf(value.toLowerCase()) > -1}
-                                    getItemValue={item => item.stnName}
-                                    renderItem={(item, highlighted) =>
-                                        <div
-                                            key={item.abbr}
-                                            style={{ backgroundColor: highlighted ? '#eee' : 'transparent', color: '#000000' }}
-                                        >
-                                            <a id={item.abbr} onClick={this.handleSelection}> {item.stnName}</a>
-                                        </div>
-                                    }
-                                    value={this.state.value}
-                                    onChange={e => this.setState({ value: e.target.value })}
-                                    onSelect={value => this.setState({ value })}
-                                />
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
+                {
+                    this.state.showSearch
+                        ? (
+                            <Row>
+                                <Col lg={4} id="autocomplete-container">
+                                    <Row id="autocomplete-row">
+                                        <Col lg={12}>
+                                            <h3 id="search-header">Select a Station</h3>
+                                        </Col>
+                                        <Col lg={12}>
+                                            <AutoComplete
+                                                menuStyle={{
+                                                    borderRadius: '3px',
+                                                    boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
+                                                    background: 'rgba(255, 255, 255, 1)',
+                                                    padding: '2px 0',
+                                                    fontSize: '90%',
+                                                    position: 'fixed',
+                                                    overflow: 'auto',
+                                                    maxHeight: '25%',
+                                                    zIndex: 3,
+                                                    cursor: 'pointer',
+                                                }}
+                                                inputProps={{ placeholder: 'Search Station' }}
+                                                items={this.state.menuData}
+                                                shouldItemRender={(item, value) => item.stnName.toLowerCase().indexOf(value.toLowerCase()) > -1}
+                                                getItemValue={item => item.stnName}
+                                                renderItem={(item, highlighted) =>
+                                                    <div
+                                                        key={item.abbr}
+                                                        style={{ backgroundColor: highlighted ? '#eee' : 'transparent', color: '#000000' }}
+                                                    >
+                                                        <a id={item.abbr} onClick={this.handleSelection}> {item.stnName}</a>
+                                                    </div>
+                                                }
+                                                value={this.state.value}
+                                                onChange={e => this.setState({ value: e.target.value })}
+                                                onSelect={value => this.setState({ value })}
+                                            />
+                                        </Col>
+                                    </Row>
+                                </Col>
+                            </Row>
+                        )
+                        : (
+                            null
+                        )
+                }
                 {
                     this.state.error
                         ? (
@@ -180,9 +191,9 @@ export default class Test extends React.Component<{}, State> {
                 {
                     this.state.showStation
                         ? (
-                            <Row>
+                            <Row id="table-row">
                                 <Col lg={12} id="table-container">
-                                    <a className="close-btn" onClick={this.closeSelection}>X</a>
+                                    <a href="" className="close-btn" onClick={this.closeSelection}>Close</a>
                                     <Row>
                                         <Col lg={12}>
                                             <h1 id="station-name">{this.state.stationData.name}</h1>
